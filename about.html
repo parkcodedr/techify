@@ -23,10 +23,10 @@
             <div class="collapse navbar-collapse" id="navbarIT">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link active " href="/index.html">Home</a>
+                        <a class="nav-link " href="/index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="/about.html">About</a>
+                        <a class="nav-link active" href="/about.html">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
@@ -57,18 +57,30 @@
                     Training Centres located in Lagos, Abuja, Ibadan, Kano and other cities nationwide. </p>
             </section>
             <section class="courses col-md-4">
-                <ul class="list-group list-group-flush">
-                    <h4 class="course-title">About Techify</h4>
-                    <li class="list-group-item">
-                        Mission
-                    </li>
-                    <li class="list-group-item">
-                        Vision
-                    </li>
-                    <li class="list-group-item">
-                        Core Value
-                    </li>
-                </ul>
+
+                <div class="accordion" id="about">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header bg-primary" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseMission" aria-expanded="true" aria-controls="collapseMission">
+                                Mission
+                            </button>
+                        </h2>
+                        <div id="collapseMission" class="accordion-collapse collapse show"
+                            aria-labelledby="collapseMission" data-bs-parent="#about">
+                            <div class="accordion-body">
+                                <strong>This is the first item's accordion body.</strong> It is shown by default, until
+                                the collapse plugin adds the appropriate classes that we use to style each element.
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
             </section>
         </div>
 
