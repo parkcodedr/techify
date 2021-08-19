@@ -5,53 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <title>Techify | Home</title>
 </head>
 
 <body style="background: rgb(242,241,237);">
-    <div class="row header-top">
-        <a class="navbar-brand" href="index.html">
-            <img src="/images/pepperest-logo-white.png"></a>
-
+    <div class="row header-top container-fluid">
+        <a class="navbar-brand" href="index.php">
+            <img src="images/pepperest-logo-white.png"></a>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="container-fluid">
 
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarIT"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarIT">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link active " href="/index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="/about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-
-                </ul>
-                <ul class="nav justify-content-lg-end">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">Students</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include('navigation.php') ?>
 
     <main class="container mt-2">
         <div class="row">
@@ -67,13 +33,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="/images/student1.jpg" class="d-block w-100 img-thumbnail">
+                            <img src="images/student1.jpg" class="d-block w-100 img-thumbnail">
                         </div>
                         <div class="carousel-item">
-                            <img src="/images/student2.jpg" class="d-block w-100 img-thumbnail">
+                            <img src="images/student2.jpg" class="d-block w-100 img-thumbnail">
                         </div>
                         <div class="carousel-item">
-                            <img src="/images/student8.jpg" class="d-block w-100 img-thumbnail">
+                            <img src="images/student8.jpg" class="d-block w-100 img-thumbnail">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#imgslider"
@@ -147,7 +113,7 @@
             <p class="lead text-center menu-header">WHAT OUR CLIENT SAYS</p>
             <section class="card col-md-4 mb-3">
                 <div class="">
-                    <img src="/images/helen.jpg" class="rounded-circle mt-2" height="90px" width="90px">
+                    <img src="images/helen.jpg" class="rounded-circle mt-2" height="90px" width="90px">
                     <p class="mt-1"><b>Ola Helen</b></p>
                     <p class="text-justify"><i>"Am highly overwelmed by the quality of service i received,
                             during my stay at Techify. keep it up"</i>
@@ -156,7 +122,7 @@
             </section>
             <section class="card col-md-4 mb-3">
                 <div class="">
-                    <img src="/images/parkcodedr.jpg" class="rounded-circle mt-1" height="90px" width="90px">
+                    <img src="images/parkcodedr.jpg" class="rounded-circle mt-1" height="90px" width="90px">
                     <p class="mt-2"><b>Ola Helen</b></p>
                     <p class="text-justify"><i>"Am highly overwelmed by the quality of service i received,
                             during my stay at Techify. keep it up"</i>
@@ -165,7 +131,7 @@
             </section>
             <section class="card col-md-4 mb-3">
                 <div class="">
-                    <img src="/images/corper.jpg" class="rounded-circle mt-2" height="90px" width="90px">
+                    <img src="images/corper.jpg" class="rounded-circle mt-2" height="90px" width="90px">
                     <p class="mt-1"><b>Ola Helen</b></p>
                     <p class="text-justify"><i>"Am highly overwelmed by the quality of service i received,
                             during my stay at Techify. keep it up"</i>
@@ -178,9 +144,9 @@
     <section class="container-fluid">
         <section class="footer menu-header">
             <div class="col-md-4 d-flex flex-column">
-                <li><a href="/about.html" class="text-white">About us</a></li>
-                <li><a href="/contact.html" class="text-white">Contact</a></li>
-                <li><a href="/subscribe.html" class="text-white">Subscribe</a></li>
+                <li><a href="about.php" class="text-white">About us</a></li>
+                <li><a href="contact.php" class="text-white">Contact</a></li>
+                <li><a href="subscribe.php" class="text-white">Subscribe</a></li>
             </div>
             <div class="text-center">Copyright &copy2021</div>
         </section>
@@ -188,7 +154,7 @@
     </section>
 
 
-    <script src="/js/bootstrap.js"></script>
+    <script src="js/bootstrap.js"></script>
 </body>
 
 </html>

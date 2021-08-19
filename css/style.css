@@ -6,6 +6,7 @@ color:#3e4095
 }
 .card-header{
     background: #3e4095;
+    color:white;
 }
 .card-title{
     color: white;
@@ -38,4 +39,13 @@ a{
 .btn-dark{
     background: #3e4095;
     color: white;
+}
+
+.item-header{
+    background: #3e4095;
+    color:white;
+}
+.item-header button{
+    background: #3e4095;
+    color:white;
 }
