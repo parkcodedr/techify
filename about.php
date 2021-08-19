@@ -16,7 +16,7 @@
         <a class="navbar-brand" href="index.php">
             <img src="images/pepperest-logo-white.png"></a>
     </div>
-    
+
     <?php include('navigation.php') ?>
 
 
@@ -88,7 +88,7 @@
     </main>
 
 
-    <script src="js/bootstrap.js"></script>
+    <?php include('footer.php') ?>
 </body>
 
 </html>

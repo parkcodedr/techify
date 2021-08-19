@@ -1,3 +1,10 @@
+<?php
+if (isset($_POST['submit'])) {
+    die('submitted');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +15,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <title>Techify | Login</title>
+    <title>Techify | Register</title>
 </head>
 
 <body style="background: rgb(242,241,237);">
@@ -67,9 +74,7 @@
         </div>
 
     </main>
-
-
-    <script src="js/bootstrap.js"></script>
+    <?php include('footer.php') ?>
 </body>
 
 </html>

@@ -29,6 +29,8 @@ a{
 .footer{
     background: #3e4095;
     color: white;
+    margin-top: 250px;
+    padding:18px
 }
 
 .header-top{
