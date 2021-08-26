@@ -2,6 +2,7 @@
 include('utility.php');
 $error = "";
 $message = "";
+$db = connect();
 
 if (isset($_POST['submit'])) {
     $fname = clean_input($_POST['fname']);
@@ -21,7 +22,21 @@ if (isset($_POST['submit'])) {
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error .= "Invalid Email address";
     } else {
-        $message .= "Success";
+
+        $sql = "INSERT INTO users(fname,lname,email,gender,course,it_center,`address`) VALUES('$fname','$lname','$email','$gender','$course','$it_center','$address')";
+        $result = $db->query($sql);
+        if ($result) {
+            $message .= "Registered Successfully";
+            $fname = "";
+            $lname = "";
+            $email = "";
+            $gender = "";
+            $course = "";
+            $it_center = "";
+            $address = "";
+        } else {
+            $error .= "Oops! Somethinge went wrong! try again" . $db->error;
+        }
     }
 }
 
