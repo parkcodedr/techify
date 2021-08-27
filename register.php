@@ -13,17 +13,21 @@ if (isset($_POST['submit'])) {
     $address = clean_input($_POST['address']);
     $course = clean_input($_POST['course']);
 
+    $password = clean_input($_POST['password']);
+    $hash_password = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+
+
     if (
         empty($fname) || empty($lname) || empty($gender)
         || empty($email) || empty($it_center) || empty($address)
-        || empty($course)
+        || empty($course) || empty($password)
     ) {
         $error .= "All fields are required";
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error .= "Invalid Email address";
     } else {
-
-        $sql = "INSERT INTO users(fname,lname,email,gender,course,it_center,`address`) VALUES('$fname','$lname','$email','$gender','$course','$it_center','$address')";
+        $role = "student";
+        $sql = "INSERT INTO users(fname,lname,email,gender,course,it_center,`address`,`password`,`user_role`) VALUES('$fname','$lname','$email','$gender','$course','$it_center','$address','$hash_password','$role')";
         $result = $db->query($sql);
         if ($result) {
             $message .= "Registered Successfully";
@@ -142,8 +146,12 @@ if (isset($_POST['submit'])) {
 
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label for="lname" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password"">
+                    </div>
 
-                    <button type="submit" class="btn btn-dark" name="submit">Register</button>
+                    <button type=" submit" class="btn btn-dark" name="submit">Register</button>
                 </form>
 
             </section>
