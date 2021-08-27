@@ -16,7 +16,6 @@ if (isset($_POST['submit'])) {
     $password = clean_input($_POST['password']);
     $hash_password = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
 
-
     if (
         empty($fname) || empty($lname) || empty($gender)
         || empty($email) || empty($it_center) || empty($address)
@@ -25,21 +24,29 @@ if (isset($_POST['submit'])) {
         $error .= "All fields are required";
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error .= "Invalid Email address";
+    } else if (strlen($password) < 8) {
+        $error .= "Password length must not be less than 8 Characters";
     } else {
         $role = "student";
-        $sql = "INSERT INTO users(fname,lname,email,gender,course,it_center,`address`,`password`,`user_role`) VALUES('$fname','$lname','$email','$gender','$course','$it_center','$address','$hash_password','$role')";
-        $result = $db->query($sql);
-        if ($result) {
-            $message .= "Registered Successfully";
-            $fname = "";
-            $lname = "";
-            $email = "";
-            $gender = "";
-            $course = "";
-            $it_center = "";
-            $address = "";
+        $user_row = $db->query("SELECT * FROM users where email='$email'");
+
+        if ($user_row->num_rows > 0) {
+            $error .= "Email Already Registered";
         } else {
-            $error .= "Oops! Somethinge went wrong! try again" . $db->error;
+            $sql = "INSERT INTO users(fname,lname,email,gender,course,it_center,`address`,`password`,`user_role`) VALUES('$fname','$lname','$email','$gender','$course','$it_center','$address','$hash_password','$role')";
+            $result = $db->query($sql);
+            if ($result) {
+                $message .= "Registered Successfully";
+                $fname = "";
+                $lname = "";
+                $email = "";
+                $gender = "";
+                $course = "";
+                $it_center = "";
+                $address = "";
+            } else {
+                $error .= "Oops! Somethinge went wrong! try again" . $db->error;
+            }
         }
     }
 }
