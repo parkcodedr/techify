@@ -1,0 +1,53 @@
+.course-title{
+    color: #3e4095;
+}
+.courses li{
+color:#3e4095
+}
+.card-header{
+    background: #3e4095;
+    color:white;
+}
+.card-title{
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+.active{
+    border-bottom: 2px solid #3e4095;
+}
+
+.menu-header{
+    background: #3e4095;
+    color: white;
+    padding:28px;
+}
+.footer li{
+    list-style-type: none;
+}
+.footer{
+    background: #3e4095;
+    color: white;
+    margin-top: 250px;
+    padding:18px
+}
+
+.header-top{
+    background: #3e4095;
+    color: white;
+    padding:20px;
+}
+.btn-dark{
+    background: #3e4095;
+    color: white;
+}
+
+.item-header{
+    background: #3e4095;
+    color:white;
+}
+.item-header button{
+    background: #3e4095;
+    color:white;
+}
