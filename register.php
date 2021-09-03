@@ -8,7 +8,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <title>Techify | Login</title>
+    <title>Techify | Register</title>
 </head>
 
 <body style="background: rgb(242,241,237);">

@@ -6,10 +6,10 @@
         <div class="collapse navbar-collapse" id="navbarIT">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active " href="index.php">Home</a>
+                    <a class="nav-link active " href="/techify/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="about.php">About</a>
+                    <a class="nav-link " href="/techify/about.php">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -19,13 +19,13 @@
 
             <ul class="nav justify-content-lg-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="/techify/login.php">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register.php">Register</a>
+                    <a class="nav-link" href="/techify/register.php">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">Students</a>
+                    <a class="nav-link " href="/techify/student">Students</a>
                 </li>
             </ul>
         </div>
