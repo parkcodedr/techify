@@ -76,14 +76,17 @@ $count = $result->num_rows;
                                     <a href="edit.php?id=<?php echo $row['id'] ?>">
                                         <button class="btn btn-warning"><i class="fas fa-edit"></i> </button>
                                     </a>
-                                    <button class="btn btn-warning"><i class="fas fa-trash"></i> </button>
+                                    <a href="delete.php?id=<?php echo $row['id'] ?>">
+                                        <button class="btn btn-danger"><i class="fas fa-trash"></i> </button>
+                                    </a>
+
                                 </td>
                             </tr>
                         <?php } ?>
                     </tbody>
 
                 </table>
-
+                <button class="btn btn-info" onclick="confirmDelete()">Click</button>
             </section>
         </div>
 
@@ -91,6 +94,31 @@ $count = $result->num_rows;
 
 
     <?php include('../footer.php') ?>
+
+    <script>
+        const confirmDelete = () => {
+            swal({
+                    title: "Are you sure to Delete?",
+                    text: "Once deleted, you will not be able to recover it!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("User has been deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Action Cancelled!", {
+                            icon: "error",
+                        });
+
+                    }
+                });
+
+        }
+    </script>
 </body>
 
 </html>
