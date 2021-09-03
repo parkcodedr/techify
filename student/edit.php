@@ -5,12 +5,17 @@ $message = "";
 $db = connect();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
+} else {
+    header("location:/techify/student/");
 }
 
 $sql = "SELECT * FROM users WHERE id = '$id'";
 $result = $db->query($sql);
-$user = $result->fetch_assoc();
 
+if ($result->num_rows == 0) {
+    header("location:/techify/student/");
+}
+$user = $result->fetch_assoc();
 
 if (isset($_POST['submit'])) {
 
@@ -21,9 +26,6 @@ if (isset($_POST['submit'])) {
     $it_center = clean_input($_POST['it_center']);
     $address = clean_input($_POST['address']);
     $course = clean_input($_POST['course']);
-    // $password = clean_input($_POST['password']);
-    // $password_confirmation = clean_input($_POST['confirm_password']);
-    //$hash_password = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
 
     if (
         empty($fname) || empty($lname) || empty($gender)
@@ -31,38 +33,16 @@ if (isset($_POST['submit'])) {
         || empty($course)
     ) {
         $error .= " All fields are required.";
-    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error .= " Invalid Email address.";
-    } //SIMILAR TO  (BUT BETTER THAN) SPECIFYING INPUT TYPE OF THE EMAIL FEILD TO BE EMAIL AND NOT TEXT
-    // else if (strlen($password) < 8){
-    //     $error .= " Password must not be less than 8 characters.";
-    // } 
-    // else if ($password != $password_confirmation){
-    //     $error .= " Passwords do not match.";
-    // }
-    else {
-        $role = "student";
-        $user_row = $db->query("SELECT * FROM users where email = '$email'");
+    } else {
 
-        if ($user_row->num_rows > 0) {
-            $error .= " Email already registered.";
+        $sql = "UPDATE users SET fname='$fname', lname='$lname', gender='$gender', 
+            course='$course', it_center='$it_center', `address`='$address' WHERE id='$id'";
+        $result = $db->query($sql);
+        if ($result) {
+            $message .= " User Updated successfully.";
         } else {
-            $sql = "INSERT INTO users(fname, lname, email, gender, course, it_center, `address`, `user_role`) VALUES('$fname', '$lname', '$email', '$gender', '$course', '$it_center', '$address', '$role')";
-            $result = $db->query($sql);
-
-            if ($result) {
-                $message .= " Registration successful.";
-                $fname = "";
-                $lname = "";
-                $gender = "";
-                $email = "";
-                $it_center = "";
-                $address = "";
-                $course = "";
-            } else {
-                $error .= " Sorry. Something went wrong! Try again.";
-                // $error .= "Error occurred ".$db->error;
-            }
+            $error .= " Sorry. Something went wrong! Try again." . $db->error;
+            // $error .= "Error occurred ".$db->error;
         }
     }
 }
