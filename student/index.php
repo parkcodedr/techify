@@ -1,7 +1,24 @@
 <?php
+session_start();
+
 include('../utility.php');
 $db = connect();
-$sql = "SELECT * FROM users";
+
+$user_email = $_SESSION["user"];
+$sql = "SELECT * FROM users WHERE email = '$user_email'";
+$result = $db->query($sql);
+$user = $result->fetch_assoc();
+
+if (!$_SESSION["user"]) {
+    header("location:/techify/login.php");
+}
+
+if ($user["user_role"] != "admin") {
+    header("location:/techify/student/dashboard.php");
+}
+
+
+$sql = "SELECT * FROM users ORDER BY id DESC";
 $result = $db->query($sql);
 $count = $result->num_rows;
 ?>

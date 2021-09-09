@@ -1,3 +1,48 @@
+<?php
+session_start();
+include('utility.php');
+$db = connect();
+$message = "";
+
+if (isset($_SESSION["user"])) {
+    $user = $_SESSION["user"];
+    if ($user) {
+        header("location:/techify/student/dashboard.php");
+    }
+}
+
+if (isset($_POST['submit'])) {
+    $email = clean_input($_POST['email']);
+    $password = clean_input($_POST['password']);
+
+    if (empty($email) || empty($password)) {
+        $message .= "Email and Password is Required";
+    } else {
+        $sql = "SELECT * FROM users WHERE email='$email'";
+        $result = $db->query($sql);
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            if (password_verify($password, $user["password"])) {
+                $_SESSION['user'] = $user["email"];
+
+                if ($user["user_role"] != "admin") {
+                    header("location:/techify/student/dashboard.php");
+                } else {
+                    header("location:/techify/student/");
+                }
+                
+            } else {
+                $message .= "Invalid Email or Password";
+            }
+        } else {
+            $message .= "Invalid Email or Password";
+        }
+    }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,14 +67,19 @@
     <main class="container mt-2">
         <div class="row justify-content-center">
             <section class="slider col-md-4 mt-5 ">
-                <h4 class="course-title">Login</h4>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Email" name="email">
-                </div>
-                <div class="input-group mb-3">
-                    <input class="form-control" type="password" placeholder="Password" name="password">
-                </div>
-                <button type="submit" class="btn btn-dark" name="submit">Login</button>
+                <h4 class="course-title fw-bold">Login</h4>
+                <form method="POST" autocomplete="off">
+                    <?php if ($message) {
+                        echo '<div class="alert alert-danger" role="alert">' . $message . '</div>';
+                    } ?>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Email" name="email">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="password" placeholder="Password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-dark" name="submit">Login</button>
+                </form>
             </section>
         </div>
 
